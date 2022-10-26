@@ -6,7 +6,7 @@ import './CoursesSection.css';
 
 const CoursesSection = ({ courses }) => {
     const { _id, title, rating, instructor, image_url } = courses;
-    console.log(courses);
+    //console.log(courses);
     return (
         <div className='card-m'>
             <Card className='border border-0 shadow' style={{ width: '20rem', height: '400px' }}>
@@ -19,9 +19,10 @@ const CoursesSection = ({ courses }) => {
                         <FaStar className='text-warning me-2'></FaStar>
                         <span>({rating?.votes})</span>
                     </div>
-                    <Link to="/coursedetails">
+                    <Link to={`/coursedetails/${_id}`}>
                         <Button className='view-btn'>View Details</Button>
                     </Link>
+                    
                 </Card.Body>
             </Card>
         </div>
