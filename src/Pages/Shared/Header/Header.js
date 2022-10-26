@@ -1,6 +1,7 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaLaptopCode } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -10,7 +11,12 @@ const Header = () => {
             {/* navbar start */}
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand ><span className='brand-name'>S</span>killo</Navbar.Brand>
+                    <div className='d-flex align-items-center'>
+                        <FaLaptopCode className='brand-logo me-1'></FaLaptopCode>
+                        <Navbar.Brand className='brand-name'>
+                            <Link to='/'><span className='span-s'>S</span>killo</Link></Navbar.Brand>
+                    </div>
+
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -20,9 +26,9 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
+                            <Nav.Link >Name</Nav.Link>
+                            <Nav.Link >
+                                profile
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

@@ -6,6 +6,8 @@ import CourseCategory from "../../Pages/Courses/CourseCategory/CourseCategory";
 import CourseDetails from "../../Pages/Courses/CourseDetails/CourseDetails";
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
+import Login from "../../Pages/Login/Login";
+import Register from "../../Pages/Register/Register";
 
 export const routes = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/checkout',
                 element: <Checkout></Checkout>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
         ]
     },

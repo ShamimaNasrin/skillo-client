@@ -1,3 +1,13 @@
-.brand-name{
+.span-s{
+    color: #7d2ae7;
+}
+.brand-name a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: 30px;
+}
+.brand-logo{
+    font-size: 40px;
     color: #7d2ae7;
 }
