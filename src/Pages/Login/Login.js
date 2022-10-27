@@ -26,16 +26,16 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                
+
                 navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
             })
-        .finally(() => {
-            setLoading(false);
-        })
+            .finally(() => {
+                setLoading(false);
+            })
 
     }
 
@@ -54,7 +54,7 @@ const Login = () => {
                     <Form.Control name="password" type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className='btn-pro' variant="primary" type="submit">
                     Login
                 </Button>
                 <Form.Text className="text-danger d-block">

@@ -7,13 +7,13 @@ import './CourseCategory.css';
 const CourseCategory = () => {
     const allCourses = useLoaderData();
     return (
-        <div>
-            <div className='container-fluid py-5 mx-2'>
+        <div className='w-100 pb-5'>
+            <div className='container-fluid'>
                 <div className="row g-2 d-flex justify-content-center">
-                    <div className="col-12 col-sm-12 col-lg-3 side-course-bar">
+                    <div className="col-12 col-sm-12 col-lg-3 side-course-bar pt-5">
                         <SideCourseBar></SideCourseBar>
                     </div>
-                    <div className="col-6 col-sm-12 col-lg-9 course-m-container">
+                    <div className="col-6 col-sm-12 col-lg-9 course-m-container pt-5">
 
                         <div className='course-card container'>
                             {

@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { FaLaptopCode, FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider';
 import Button from 'react-bootstrap/Button';
-import { BsGoogle, BsGithub } from "react-icons/bs";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { BsGoogle, BsGithub, BsFillSunFill, BsSun } from "react-icons/bs";
+import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import './Header.css';
+import { useState } from 'react';
 
 const Header = () => {
-    const { user, logOut, providerLogin } = useContext(AuthContext);
+    const [day, setDay] = useState(false);
+    const { user, logOut, providerLogin, providerLoginGithub } = useContext(AuthContext);
 
     //creating googleProvider & handle login with google
     const googleProvider = new GoogleAuthProvider();
@@ -21,6 +23,18 @@ const Header = () => {
             })
             .catch(error => console.error(error))
     }
+
+    //creating GithubAuthProvider
+    const githubProvider = new GithubAuthProvider();
+    const handleGitHubSignIn = () => {
+        providerLoginGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
 
     //Logout
     const handleLogOut = () => {
@@ -50,6 +64,11 @@ const Header = () => {
 
                         </Nav>
                         <Nav className="d-flex align-items-center">
+                            <div onClick={() => setDay(!day)} className="theme-icon me-2">
+                                {
+                                    day ? <BsFillSunFill /> : <BsSun />
+                                }
+                            </div>
                             <>
                                 {
                                     user?.uid ?
@@ -61,7 +80,7 @@ const Header = () => {
                                         <>
                                             <Nav.Link as={Link} to='/login'>Login</Nav.Link>
                                             <button onClick={handleGoogleSignIn} type="button" className="rounded-5 border border-0 bg-transparent mx-1"><BsGoogle></BsGoogle></button>
-                                            <button type="button" className="rounded-5 border border-0 bg-transparent me-1"><BsGithub></BsGithub></button>
+                                            <button onClick={handleGitHubSignIn} type="button" className="rounded-5 border border-0 bg-transparent me-1"><BsGithub></BsGithub></button>
                                         </>
                                 }
 
@@ -74,11 +93,11 @@ const Header = () => {
                                         roundedCircle
                                         src={user?.photoURL}>
                                     </Image>
-                                    : <FaUser></FaUser>
+                                    : <FaUser  className='span-s'></FaUser>
 
-                                    
+
                                 }
-                                
+
                             </Link>
                         </Nav>
                     </Navbar.Collapse>

@@ -15,12 +15,12 @@ const SideCourseBar = () => {
     return (
         <div className='container'>
             <div>
-                <h3>Programming languages:</h3>
+                <h3 className='mb-4'>Programming languages:</h3>
                 {
 
                     courseName.map(course => <Link
-                        to={`/coursedetails/${course._id}`}>
-                        <p>{course.name}</p></Link>)
+                        to={`/coursedetails/${course._id}`} className='text-decoration-none'>
+                        <p className='fw-semibold span-s fs-5 bg-white p-2 rounded-3'>{course.name}</p></Link>)
 
                 }
             </div>

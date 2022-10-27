@@ -15,6 +15,12 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
+    //github
+    const providerLoginGithub = (gitprovider) => {
+        setLoading(true);
+        return signInWithPopup(auth, gitprovider);
+    }
+
     //to get current login user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -53,7 +59,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const authInfo = {
-        user, loading, setLoading, createUser, signIn, updateUserProfile, logOut, providerLogin
+        user, loading, setLoading, createUser, signIn, updateUserProfile, logOut, providerLogin, providerLoginGithub
     };
     return (
         <AuthContext.Provider value={authInfo}>

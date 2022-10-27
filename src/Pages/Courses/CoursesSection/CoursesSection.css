@@ -5,7 +5,7 @@
 .view-btn {
     background-color: #7d2ae7 !important;
     color: white;
-    border: none;
+    border: none !important;
     position: absolute;
     bottom: 10px;
 }

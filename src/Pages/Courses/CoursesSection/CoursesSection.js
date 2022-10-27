@@ -21,7 +21,7 @@ const CoursesSection = ({ courses }) => {
                         
                     </div>
                     <span className='fw-bold'>$80.50</span>
-                    <Link to={`/coursedetails/${_id}`}>
+                    <Link className='d-flex justify-content-center' to={`/coursedetails/${_id}`}>
                         <Button className='view-btn'>View Details</Button>
                     </Link>
 

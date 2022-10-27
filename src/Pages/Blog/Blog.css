@@ -1,32 +1,35 @@
-.side-course-bar{
-    background-color: #ede2fc;
-}
-.course-m-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-.course-card{
+.card-conatiner{
     margin-left: auto;
     margin-right: auto;
+    width: 90%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     gap: 15px;
+}
+.card-blog{
+    border: 2px solid #7d2ae7 !important;
+    height: 400px !important;
 }
 
 /* Responsiveness for tablet */
 @media screen and (min-width: 690px) and (max-width:1350px) {
-    .course-card {
+    .card-conatiner {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .card-blog{
+        height: 500px !important;
     }
   }
   
   /* Responsiveness for mobile */
   @media screen and (max-width:689px) {
-    .course-card {
+    .card-conatiner{
       grid-template-columns: repeat(1, 1fr);
+    }
+    .card-blog{
+        min-height: 700px;
+        overflow: hidden;
     }
 
   }

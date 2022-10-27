@@ -8,5 +8,5 @@
 .btn-pro{
     background-color: #7d2ae7 !important;
     color: white;
-    border: none;
+    border: none !important;
 }

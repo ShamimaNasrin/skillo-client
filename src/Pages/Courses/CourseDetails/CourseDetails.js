@@ -41,7 +41,7 @@ const CourseDetails = () => {
                 <p>Support: {features.support}</p>
                 <p>Access: {features.access}</p>
             </div>
-            <Link to={`/checkout/${_id}`}>
+            <Link className='text-decoration-none' to={`/checkout/${_id}`}>
                 <Button className="btn-pro d-block mx-auto">Go premium</Button>
             </Link>
 
