@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('');
     const { createUser, updateUserProfile} = useContext(AuthContext);
 
 
@@ -23,11 +24,13 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError('');
                 handleUpdateUserProfile(name, photoURL);
+            
             })
             .catch(e => {
                 console.error(e);
-
+                setError(error.message);
             });
 
     }
@@ -71,7 +74,7 @@ const Register = () => {
                     Register
                 </Button>
                 <Form.Text className="text-danger d-block">
-                    error
+                    {error}
                 </Form.Text>
             </Form>
         </div>

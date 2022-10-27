@@ -1,14 +1,19 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
+    const course = useLoaderData();
+    const { title } = course;
     return (
         <div className='w-50 mx-auto my-5'>
             <div className="mx-auto text-center">
                 <h3>Billing information</h3>
                 <p>Complete your purchase by providing your payment details.</p>
+                <h3>{title}</h3>
             </div>
+
             <Form >
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">

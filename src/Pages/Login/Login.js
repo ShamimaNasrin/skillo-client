@@ -6,8 +6,12 @@ import { AuthContext } from '../../context/AuthProvider';
 
 
 const Login = () => {
+    const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -21,15 +25,17 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-
-
+                setError('');
+                
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message);
             })
-        // .finally(() => {
-        //     setLoading(false);
-        // })
+        .finally(() => {
+            setLoading(false);
+        })
 
     }
 
@@ -52,7 +58,7 @@ const Login = () => {
                     Login
                 </Button>
                 <Form.Text className="text-danger d-block">
-                    error
+                    {error}
                 </Form.Text>
                 <Form.Text className='d-block my-4'>
                     No account? <Link to='/register'>Register</Link>

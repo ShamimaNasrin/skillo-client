@@ -75,7 +75,10 @@ const Header = () => {
                                         src={user?.photoURL}>
                                     </Image>
                                     : <FaUser></FaUser>
+
+                                    
                                 }
+                                
                             </Link>
                         </Nav>
                     </Navbar.Collapse>

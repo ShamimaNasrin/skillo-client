@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { title, intro_text, image_url, total_student, quiz, course_duration, description, features, instructor } = course;
+    const { title, intro_text, image_url, total_student, quiz, course_duration, description, features, instructor, _id } = course;
     //console.log(course);
     return (
         <div className='container my-5'>
@@ -41,7 +41,7 @@ const CourseDetails = () => {
                 <p>Support: {features.support}</p>
                 <p>Access: {features.access}</p>
             </div>
-            <Link to='/checkout'>
+            <Link to={`/checkout/${_id}`}>
                 <Button className="btn-pro d-block mx-auto">Go premium</Button>
             </Link>
 
