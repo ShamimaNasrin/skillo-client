@@ -1,0 +1,20 @@
+.container-login{
+    margin-top: 0;
+    width: 45%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Responsiveness for tablet */
+@media screen and (min-width: 690px) and (max-width:957px) {
+    .container-login{
+        width: 65%;
+    }
+  }
+  
+  /* Responsiveness for mobile */
+  @media screen and (max-width:689px) {
+    .container-login{
+        width: 75%;
+    }
+
+  }

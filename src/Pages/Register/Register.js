@@ -50,7 +50,7 @@ const handleUpdateUserProfile = (name, photoURL) => {
 }
 
 return (
-    <div className='w-50 mx-auto my-5 py-3'>
+    <div className='mx-auto my-5 p-5 container-login rounded-4'>
         <h1>Register Here</h1>
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">

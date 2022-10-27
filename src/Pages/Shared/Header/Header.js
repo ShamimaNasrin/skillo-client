@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { FaLaptopCode, FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider';
 import Button from 'react-bootstrap/Button';
-import { BsGoogle, BsGithub, BsFillSunFill, BsSun } from "react-icons/bs";
-import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import { BsFillSunFill, BsSun } from "react-icons/bs";
+
 import './Header.css';
 import { useState } from 'react';
 import Tippy from '@tippyjs/react';
@@ -13,29 +13,7 @@ import 'tippy.js/dist/tippy.css';
 
 const Header = () => {
     const [day, setDay] = useState(false);
-    const { user, logOut, providerLogin, providerLoginGithub } = useContext(AuthContext);
-
-    //creating googleProvider & handle login with google
-    const googleProvider = new GoogleAuthProvider();
-    const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch(error => console.error(error))
-    }
-
-    //creating GithubAuthProvider
-    const githubProvider = new GithubAuthProvider();
-    const handleGitHubSignIn = () => {
-        providerLoginGithub(githubProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch(error => console.error(error))
-    }
+    const { user, logOut } = useContext(AuthContext);
 
     //Logout
     const handleLogOut = () => {
@@ -74,14 +52,13 @@ const Header = () => {
                                 {
                                     user?.uid ?
                                         <>
-                                            <span>{user?.displayName}</span>
-                                            <Button variant="light" className="text-dark" onClick={handleLogOut}>Log out</Button>
+                                            <span className='mx-1'>{user?.displayName}</span>
+                                            <Button variant="light" className="text-dark mx-2" onClick={handleLogOut}>Log out</Button>
                                         </>
                                         :
                                         <>
                                             <Nav.Link as={Link} to='/login'>Login</Nav.Link>
-                                            <button onClick={handleGoogleSignIn} type="button" className="rounded-5 border border-0 bg-transparent mx-1"><BsGoogle></BsGoogle></button>
-                                            <button onClick={handleGitHubSignIn} type="button" className="rounded-5 border border-0 bg-transparent me-1"><BsGithub></BsGithub></button>
+
                                         </>
                                 }
 

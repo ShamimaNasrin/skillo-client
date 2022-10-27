@@ -3,11 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import './Login.css';
 
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { signIn, setLoading, providerLogin, providerLoginGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,32 +41,59 @@ const Login = () => {
 
     }
 
+    //creating googleProvider & handle login with google
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
+    //creating GithubAuthProvider
+    const githubProvider = new GithubAuthProvider();
+    const handleGitHubSignIn = () => {
+        providerLoginGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
+
     return (
-        <div className='w-50 mx-auto my-5 py-3'>
-            <h1>Login Here</h1>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Enter email" required />
+        <div className=''>
+            <div className='mx-auto my-5 p-5 container-login rounded-4'>
+                <h1>Welcome back</h1>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control name="email" type="email" placeholder="Enter email" required />
 
-                </Form.Group>
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Password" required />
-                </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control name="password" type="password" placeholder="Password" required />
+                    </Form.Group>
 
-                <Button className='btn-pro' variant="primary" type="submit">
-                    Login
-                </Button>
-                <Form.Text className="text-danger d-block">
-                    {error}
-                </Form.Text>
-                <Form.Text className='d-block my-4'>
-                    No account? <Link to='/register'>Register</Link>
-                </Form.Text>
+                    <Button className='btn-pro w-50 d-block mx-auto' variant="primary" type="submit">
+                        Login
+                    </Button>
+                    <Button onClick={handleGoogleSignIn} className='w-50 d-block mx-auto my-2' variant="outline-primary">Google Login</Button>
+                    <Button onClick={handleGitHubSignIn} className='w-50 d-block mx-auto my-2' variant="outline-secondary">Github Login</Button>
+                    <Form.Text className="text-danger d-block">
+                        {error}
+                    </Form.Text>
+                    <Form.Text className='d-block my-4'>
+                        No account? <Link to='/register'>Register</Link>
+                    </Form.Text>
 
-            </Form>
+                </Form>
+            </div>
         </div>
     );
 };

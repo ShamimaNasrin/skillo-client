@@ -30,17 +30,17 @@ const CourseDetails = () => {
                 <div className='py-2 w-50'>
                     <h1>{title}</h1>
                     <p>{intro_text}</p>
-                    <button onClick={handlePdf} type="button" className="rounded-5 border border-0 bg-transparent me-1 fs-4 "><BsSaveFill></BsSaveFill></button>
+                    <button onClick={handlePdf} type="button" className="rounded-5 border border-0 bg-transparent me-1 fs-4 "><BsSaveFill className='span-s'></BsSaveFill></button>
                 </div>
                 <div className='d-flex justify-content-center align-items-center w-50'>
                     <img className='details-img' src={image_url} alt="logo" />
                 </div>
             </section>
             <div className='side-course-bar px-5 py-3 my-5 d-flex justify-content-evenly align-items-center'>
-                <p className='align-middle fw-bolder '><FaUserFriends className='react-icon'></FaUserFriends> {total_student}</p>
+                <p className='align-middle fw-bolder '><FaUserFriends className='react-icon span-s'></FaUserFriends> {total_student}</p>
 
-                <p className='align-middle fw-bolder '><BsHourglassBottom className='react-icon'></BsHourglassBottom> {course_duration}</p>
-                <p className='align-middle fw-bolder '><BsJournalCheck className='react-icon'></BsJournalCheck> {quiz}</p>
+                <p className='align-middle fw-bolder '><BsHourglassBottom className='react-icon span-s'></BsHourglassBottom> {course_duration}</p>
+                <p className='align-middle fw-bolder '><BsJournalCheck className='react-icon span-s'></BsJournalCheck> {quiz}</p>
 
             </div>
 
