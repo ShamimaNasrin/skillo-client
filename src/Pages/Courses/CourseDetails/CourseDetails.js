@@ -1,7 +1,9 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaUserFriends } from 'react-icons/fa';
+import { BsHourglassBottom, BsJournalCheck } from "react-icons/bs";
 import './CourseDetails.css';
+import { Button } from 'react-bootstrap';
 
 const CourseDetails = () => {
     const course = useLoaderData();
@@ -22,8 +24,8 @@ const CourseDetails = () => {
             <div className='side-course-bar px-5 py-3 my-5 d-flex justify-content-evenly align-items-center'>
                 <p className='align-middle fw-bolder '><FaUserFriends className='react-icon'></FaUserFriends> {total_student}</p>
 
-                <p className='align-middle fw-bolder '> {course_duration}</p>
-                <p className='align-middle fw-bolder '> {quiz}</p>
+                <p className='align-middle fw-bolder '><BsHourglassBottom className='react-icon'></BsHourglassBottom> {course_duration}</p>
+                <p className='align-middle fw-bolder '><BsJournalCheck className='react-icon'></BsJournalCheck> {quiz}</p>
 
             </div>
 
@@ -39,8 +41,9 @@ const CourseDetails = () => {
                 <p>Support: {features.support}</p>
                 <p>Access: {features.access}</p>
             </div>
-
-
+            <Link to='/checkout'>
+                <Button className="btn-pro d-block mx-auto">Go premium</Button>
+            </Link>
 
         </div>
     );

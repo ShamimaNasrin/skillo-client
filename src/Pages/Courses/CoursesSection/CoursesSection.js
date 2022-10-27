@@ -18,11 +18,13 @@ const CoursesSection = ({ courses }) => {
                         <span>{rating?.number}</span>
                         <FaStar className='text-warning me-2'></FaStar>
                         <span>({rating?.votes})</span>
+                        
                     </div>
+                    <span className='fw-bold'>$80.50</span>
                     <Link to={`/coursedetails/${_id}`}>
                         <Button className='view-btn'>View Details</Button>
                     </Link>
-                    
+
                 </Card.Body>
             </Card>
         </div>
