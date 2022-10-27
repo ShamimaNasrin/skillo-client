@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
+
 
 const Login = () => {
+    const { signIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -11,6 +15,21 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+
+
+            })
+            .catch(error => {
+                console.error(error);
+            })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
 
     }
 
@@ -38,6 +57,7 @@ const Login = () => {
                 <Form.Text className='d-block my-4'>
                     No account? <Link to='/register'>Register</Link>
                 </Form.Text>
+
             </Form>
         </div>
     );
