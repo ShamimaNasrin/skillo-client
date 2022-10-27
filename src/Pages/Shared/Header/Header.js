@@ -8,6 +8,8 @@ import { BsGoogle, BsGithub, BsFillSunFill, BsSun } from "react-icons/bs";
 import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import './Header.css';
 import { useState } from 'react';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const Header = () => {
     const [day, setDay] = useState(false);
@@ -35,7 +37,6 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
-
     //Logout
     const handleLogOut = () => {
         logOut()
@@ -61,13 +62,13 @@ const Header = () => {
                             <Nav.Link as={Link} to='/faq'>FAQ</Nav.Link>
                             <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
 
-
                         </Nav>
                         <Nav className="d-flex align-items-center">
                             <div onClick={() => setDay(!day)} className="theme-icon me-2">
                                 {
                                     day ? <BsFillSunFill /> : <BsSun />
                                 }
+
                             </div>
                             <>
                                 {
@@ -84,17 +85,17 @@ const Header = () => {
                                         </>
                                 }
 
-
                             </>
                             <Link to="/profile">
                                 {user?.photoURL ?
-                                    <Image
-                                        style={{ height: '40px' }}
-                                        roundedCircle
-                                        src={user?.photoURL}>
-                                    </Image>
-                                    : <FaUser  className='span-s'></FaUser>
-
+                                    <Tippy content={user?.displayName}>
+                                        <Image
+                                            style={{ height: '40px' }}
+                                            roundedCircle
+                                            src={user?.photoURL}>
+                                        </Image>
+                                    </Tippy>
+                                    : <FaUser className='span-s'></FaUser>
 
                                 }
 
