@@ -1,0 +1,26 @@
+.header-sec{
+    height: 90vh;
+}
+.width-size{
+    width: 50%;
+}
+.card-img-h{
+    height: 200px;
+}
+
+
+/* Responsiveness for tablet */
+@media screen and (min-width: 690px) and (max-width:757px) {
+    .width-size{
+        width: 70%;
+    }
+  }
+  
+  /* Responsiveness for mobile */
+  @media screen and (max-width:689px) {
+    .width-size{
+        margin-top: 20px;
+        width: 80%;
+    }
+
+  }

@@ -47,7 +47,7 @@ const Header = () => {
         <div>
 
             {/* navbar start */}
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" className='navbar' variant="light">
                 <Container>
                     <div className='d-flex align-items-center'>
                         <FaLaptopCode className='brand-logo me-1'></FaLaptopCode>
