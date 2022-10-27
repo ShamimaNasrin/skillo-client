@@ -3,8 +3,11 @@ import { Navbar, Container, Nav, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaLaptopCode } from 'react-icons/fa';
 import './Header.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Header = () => {
+    const {user} = useContext(AuthContext);
     return (
         <div>
 
@@ -20,12 +23,16 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to='courses' >Courses</Nav.Link>
-                            <Nav.Link as={Link} to='faq'>FAQ</Nav.Link>
-                            <Nav.Link as={Link} to='blog'>Blog</Nav.Link>
+                            <Nav.Link as={Link} to='/courses' >Courses</Nav.Link>
+                            <Nav.Link as={Link} to='/faq'>FAQ</Nav.Link>
+                            <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
+                            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
 
                         </Nav>
                         <Nav>
+                        <Nav.Link >
+                                {user.name}
+                            </Nav.Link>
                             <Nav.Link >Name</Nav.Link>
                             <Nav.Link >
                                 profile
