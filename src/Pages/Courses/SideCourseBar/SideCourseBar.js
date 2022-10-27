@@ -7,7 +7,7 @@ const SideCourseBar = () => {
     const [courseName, setCourseName] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://skillo-server-api.vercel.app/courses')
             .then(res => res.json())
             .then(data => setCourseName(data));
     }, [])

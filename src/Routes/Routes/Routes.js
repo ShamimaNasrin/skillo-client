@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <CourseCategory></CourseCategory>,
-                loader: () => fetch(`http://localhost:5000/courses-info`)
+                loader: () => fetch(`https://skillo-server-api.vercel.app/courses-info`)
         
             },
             {
@@ -36,12 +36,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/coursedetails/:courseid',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses-info/${params.courseid}`)
+                loader: ({ params }) => fetch(`https://skillo-server-api.vercel.app/courses-info/${params.courseid}`)
             },
             {
+                
                 path: '/checkout/:courseid',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses-info/${params.courseid}`)
+                loader: ({ params }) => fetch(`https://skillo-server-api.vercel.app/courses-info/${params.courseid}`)
             },
             
             {
