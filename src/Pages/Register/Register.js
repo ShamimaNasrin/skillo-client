@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile} = useContext(AuthContext);
 
 
     //to get from value and create user
@@ -23,14 +23,24 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-
-
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch(e => {
                 console.error(e);
 
             });
 
+    }
+
+    //to get userName and Photo to the database
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
     }
 
     return (

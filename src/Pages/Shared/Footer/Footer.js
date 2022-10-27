@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <h1>footer</h1>
+            <small className='d-block mx-auto text-center'>&copy; 2022 Skillo All rights reserved. </small>
         </div>
     );
 };
