@@ -1,5 +1,5 @@
 # Skillo
-## Skillo is an online programmimg language learning platform.
+## Skillo is a full stack online based teaching platform.
 
 ## Live preview: https://educational-website-5d5ee.web.app/
 
